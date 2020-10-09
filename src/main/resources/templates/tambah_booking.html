@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tambah Booking</title>
+    <meta charset="utf-8"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<div>
+    <h1>Tambah Booking</h1>
+    <br/>
+    <form th:object="${booking}" th:action="@{/simpan_booking}" method="post">
+        <table border="1">
+            <tr>
+                <td>Username</td>
+                <td><input type="text" th:field="*{username}"></td>
+            </tr>
+            <tr>
+                <select class="form-control" name="dropBandara" id="fromBandara"
+                        th:field="*{from}">
+                    <option value="0"> From</option>
+                    <option th:each="location : ${bandara}" th:value="${location.getLocation()}"
+                            th:text="${location.getLocation()}"></option>
+                </select>
+            </tr>
+            <tr>
+                <select class="form-control" name="dropBandara" id="toBandara"
+                        th:field="*{to}">
+                    <option value="0">To</option>
+                    <option th:each="location : ${bandara}" th:value="${location.getLocation()}"
+                            th:text="${location.getLocation()}"></option>
+                </select>
+            </tr>
+            <tr>
+                <label for="departureDate">Departure date:</label>
+
+                <input th:field="*{depature}" type="date" id="departureDate" name="trip-start"
+                       value="2018-07-22"
+                       min="2018-01-01" max="2018-12-31">
+            </tr>
+            <tr>
+                <label for="returnDate">Return date:</label>
+
+                <input th:field="*{returndate}" type="date" id="returnDate" name="trip-start"
+                       value="2018-07-22"
+                       min="2020-01-01" max="2021-12-31">
+            </tr>
+            <tr>
+                <td>No. of Passangers</td>
+                <td><input type="text" th:field="*{numberpassangers}"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Tambah</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

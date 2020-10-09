@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Page</title>
+    <meta charset="utf-8"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body> 
+<div align="center">
+    <!--    <div th:object="user">-->
+    <!--        Welcome <b><span th:text="${user.username}"></span></b>-->
+    <!--        Welcome Admin!-->
+    <!--    </div>-->
+
+    <!--    <form th:action="@{/logout}" method="post">-->
+    <!--        <input type="submit" value="Logout" />-->
+    <!--    </form>-->
+
+    <div class="container">
+        <div>
+            <h2>Selamat Datang Admin</h2><b><h2 th:text="${username}"></h2></b>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"> 
+                <button type="button" class="btn btn-danger"><a th:href="@{/tambah_bandara}">Tambah Bandara</a></button>
+            </div>
+            <div class="col-sm-4">
+                <h3></h3>
+            </div>
+        </div>
+        <div class="row">
+            <h2 align="center">List Order</h2>
+        </div>
+        <div class="row" align="center">
+            <table border="1">
+                <thead>
+                <tr>
+                    <td>Username</td>
+                    <td>From</td>
+                    <td>To</td>
+                    <td>Qty</td>
+                    <td>Delete</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="booking : ${getAllBooking}">
+                    <td th:text="${booking.username}"></td>
+                    <td th:text="${booking.from}"></td>
+                    <td th:text="${booking.to}"></td>
+                    <td th:text="${booking.numberpassangers}"></td>
+                    <td><a th:href="@{'/delete/' + ${booking.id}}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

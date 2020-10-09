@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tambah Bandara</title>
+    <meta charset="utf-8"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+    <div>
+        <h1>Tambah Bandara</h1>
+        <br/>
+        <form th:object="${bandara}" th:action="@{/simpan_bandara}" method="post">
+            <table border="1">
+                <tr>
+                    <td>Nama Bandara</td>
+                    <td><input type="text" th:field="*{location}"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Tambah</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
